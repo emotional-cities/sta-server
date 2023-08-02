@@ -10,7 +10,8 @@ First create a `.env` file with the environment variables. For example:
 
 ```
 POSTGRES_PASSWORD="CHANGEme"
-POSTGRES_USER="someuser"```
+POSTGRES_USER="postgres"
+```
 
 Then run:
 
