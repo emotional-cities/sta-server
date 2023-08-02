@@ -9,10 +9,8 @@ You will need `docker` and `docker-compose` installed in your system, in order t
 First create a `.env` file with the environment variables. For example:
 
 ```
-STA_USER="guest"
-STA_PASSWORD=CHANGEME
-```
-It is important that the password is *not* enclosed in quotes!
+POSTGRES_PASSWORD="CHANGEme"
+POSTGRES_USER="someuser"```
 
 Then run:
 
