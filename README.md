@@ -22,6 +22,12 @@ docker-compose up -d
 Access the server on:
 http://localhost:8080/FROST-Server/
 
+## Add Data
+
+```
+curl -X POST -H "Content-Type: application/json" -d @sample.json http://localhost:8080/FROST-Server/v1.1/Things
+```
+
 ## License
 
 This project is released under an [MIT License](./LICENSE)
