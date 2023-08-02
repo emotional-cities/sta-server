@@ -1,0 +1,78 @@
+# =================================================================
+#
+# Authors: doublebyte1 <jo@byteroad.net>>
+#          pascalike <ant@byteroad.net>
+#
+# Copyright (c) 2022 doublebyte
+# Copyright (c) 2019 pascalike
+#
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+#
+# =================================================================
+
+version: '3.3'
+
+services:
+
+  # apache-httpd:
+  #   image: httpd:2.4
+  #   depends_on:
+  #     - pygeoapi
+  #     - geoserver
+  #     - mapstore
+  #   volumes:
+  #     - ./apache-httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   container_name: apache-httpd
+
+  frost:
+    image: fraunhoferiosb/frost-server:2.0
+    environment:
+      - serviceRootUrl=http://localhost:8080/FROST-Server
+      - plugins.multiDatastream.enable=true
+      - http_cors_enable=true
+      - http_cors_allowed_origins=*
+      - persistence_db_driver=org.postgresql.Driver
+      - persistence_db_url=jdbc:postgresql://postgis:5432/sensorthings
+      - persistence_db_username=${STA_USER}
+      - persistence_db_password=${STA_PASSWORD}
+      - persistence_autoUpdateDatabase=true
+      - persistence_persistenceManagerImplementationClass=de.fraunhofer.iosb.ilt.sta.persistence.pgjooq.imp.PostgresPersistenceManagerString
+      - persistence_idGenerationMode=ServerAndClientGenerated
+    ports:
+      - 8080:8080
+      - 1883:1883
+    depends_on:
+      - database
+
+  database:
+    image: postgis/postgis:14-3.2-alpine
+    environment:
+      - POSTGRES_DB=sensorthings
+      - POSTGRES_USER=${STA_USER}
+      - POSTGRES_PASSWORD=${STA_PASSWORD}
+    volumes:
+      - postgis_volume:/var/lib/postgresql/data
+volumes:
+    postgis_volume:
