@@ -40,6 +40,7 @@
 					"phenomenonTime": "2022-09-22T09:30:19.708989Z",
 					"result": 2492.11881188119,
 					"FeatureOfInterest": {
+						"@iot.id": "foid-1",
 						"name": "gps",
 						"description": "GPS coordinates of a data point.",
 						"encodingType": "application/vnd.geo+json",
@@ -56,6 +57,7 @@
 					"phenomenonTime": "2022-09-22T09:30:20.708989Z",
 					"result": 2494,
 					"FeatureOfInterest": {
+						"@iot.id": "foid-2",
 						"name": "gps",
 						"description": "GPS coordinates of a data point.",
 						"encodingType": "application/vnd.geo+json",
@@ -93,11 +95,17 @@
 			"Observations": [
 				{
 					"phenomenonTime": "2022-09-22T09:30:19.708989Z",
-					"result": 4249.27722772277
+					"result": 4249.27722772277,
+					"FeatureOfInterest": {
+						"@iot.id": "foid-1"
+					}
 				},
 				{
 					"phenomenonTime": "2022-09-22T09:30:20.708989Z",
-					"result": 4241
+					"result": 4241,
+					"FeatureOfInterest": {
+						"@iot.id": "foid-2"
+					}
 				}				
 			]
 		}
