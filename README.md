@@ -25,7 +25,7 @@ http://localhost:8080/FROST-Server/
 ## Add Data
 
 ```
-curl -X POST -H "Content-Type: application/json" -d @sample.json http://localhost:8080/FROST-Server/v1.1/Things
+curl -X POST -H "Content-Type: application/json" -d @sample-locations.json http://localhost:8080/FROST-Server/v1.1/Things
 ```
 
 ## License
