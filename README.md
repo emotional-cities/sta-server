@@ -13,6 +13,12 @@ POSTGRES_PASSWORD="CHANGEme"
 POSTGRES_USER="postgres"
 ```
 
+Change script permission:
+
+```
+sudo chmod +x sensorthings.sh
+```
+
 Then run:
 
 ```
