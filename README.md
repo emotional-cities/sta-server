@@ -28,6 +28,14 @@ http://localhost:8080/FROST-Server/
 curl -X POST -H "Content-Type: application/json" -d @sample-locations.json http://localhost:8080/FROST-Server/v1.1/Things
 ```
 
+## Consume Data
+
+You can view/analyse data using any sensorthings API compliant client, for instance the [SensorThingsAPI QGIS plugin](https://github.com/AirBreak-UIA/SensorThingsAPI_QGIS-plugin) (see screenshots bellow).
+
+[screenshot of the SensorThingsAPI QGIS plugin](./sta1.png) 
+
+[screenshot of the SensorThingsAPI QGIS plugin](./sta2.png)
+
 ## License
 
 This project is released under an [MIT License](./LICENSE)
